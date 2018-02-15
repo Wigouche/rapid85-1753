@@ -12,3 +12,17 @@ this current version does not implement any functions relating to the timed prog
 
 The repo also includes a simple Console example program that demonstrates some of the various functionality.
 
+## future work
+
+the following list is posable features/fixes to work on this project
+
+- add timed program functions 
+---*Recall timed program
+---*Stop timed program
+---*Get timed programs
+---*Get specific timed program
+---*Set Timed Program
+
+-use single com port for multiple supplies (pass in a serial port object ref and addres rather than a port name)
+
+-change converter to a off the shelf model need to change line endings for this.
