@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using rapid85_1753;
 using System.IO.Ports;
 
@@ -14,27 +11,37 @@ namespace ExampleRapid85_1753program
         {
             System.Console.WriteLine("Rapid 85-1753 Programmable power supply Example program");
             System.Console.WriteLine("Select the COM port of the power supply");
-            var portName = GetPortName(); //get from my other project
-            //todo use result of get ports in supply contructor
+
+            var portName = GetPortName();             
+
             Console.WriteLine("Enter the address of the Power suppply:");
+
             var address = GetUserInt();
             PowerSupply supply = new PowerSupply(portName, 1);
             supply.Connect();
-            
             supply.Output(false);
+
             System.Console.Write("Enter a desired output voltage: ");
+
             var voltage =GetUserDec();
             supply.SetV(voltage);
+
             System.Console.Write("Enter a desired output current Limit: ");
+
             var current = GetUserDec();
             supply.SetI(current);
+
             System.Console.WriteLine("Get setpoints from supply.");
 
             System.Console.WriteLine(supply.GetSetpoints());
+
             System.Console.WriteLine("press enter to turn on supply output");
+
             System.Console.ReadLine();
             supply.Output(true);
+
             System.Console.WriteLine("press return to get measurments from the Power supply");
+
             System.Console.ReadLine();
             System.Console.WriteLine(supply.GetMesurments());
 
@@ -48,7 +55,7 @@ namespace ExampleRapid85_1753program
             decimal responce;
             while(!decimal.TryParse(Console.ReadLine(),out responce))
             {
-                Console.WriteLine("The entered value is not a decimal value");
+                Console.WriteLine("The entered value is not a decimal value. try again");
             }
 
             return responce;
@@ -59,7 +66,7 @@ namespace ExampleRapid85_1753program
             int responce;
             while (!int.TryParse(Console.ReadLine(), out responce))
             {
-                Console.WriteLine("The entered value is not a decimal value");
+                Console.WriteLine("The entered value is not a decimal value. try again");
             }
             return responce;
         }
@@ -112,5 +119,4 @@ namespace ExampleRapid85_1753program
             return portName;
         }
     }
-
 }
